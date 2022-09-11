@@ -1,5 +1,5 @@
-#include<vector>
-#include<cassert>
+#include <cassert>
+#include <vector>
 //阶乘
 
 template <typename T>
@@ -8,16 +8,17 @@ struct Fact {
     const T MOD;
     std::vector<T> fact, factinv;
     static const T inv(const T& x, const T& y) {
-    assert(x != 0);
-    T u = 0, v = 1, a = x, m = y, t;
-    while (a != 0) {
-        t = m / a;
-        swap(a, m -= t * a);
-        swap(u -= t * v, v);
+        assert(x != 0);
+        T u = 0, v = 1, a = x, m = y, t;
+        while (a != 0) {
+            t = m / a;
+            swap(a, m -= t * a);
+            swap(u -= t * v, v);
+        }
+        assert(m == 1);
+        if (u < 0) u += y;
+        return u;
     }
-    assert(m == 1);
-    return u;
-}
     Fact() = default;
     Fact(int _n, T _MOD) : n(_n), MOD(_MOD) {
         assert(_n > 0 && _MOD >= 0);

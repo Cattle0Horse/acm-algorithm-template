@@ -14,6 +14,7 @@ struct modint {
         int a = val, b = MOD, u = 1, v = 0, t;
         while (b > 0) t = a / b, swap(a -= t * b, b), swap(u -= t * v, v);
         assert(b == 1);
+        //if(u<0)u+=y;
         return modint(u);
     }
     modint() : val(0) {}
