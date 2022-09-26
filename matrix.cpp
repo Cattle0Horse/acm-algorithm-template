@@ -1,3 +1,4 @@
+#include <cassert>
 #include <concepts>
 #include <iostream>
 #include <vector>
@@ -73,8 +74,7 @@ ostream& operator<<(ostream& o, const mat<T>& v) {
     cout << v[0][0];
     for (int i = 1; i < v.row; ++i) cout << ' ' << v[0][i];
     for (int i = 1; i < v.row; ++i) {
-        cout << '\n'
-             << v[i][0];
+        cout << '\n' << v[i][0];
         for (int j = 1; j < v.col; ++j) cout << ' ' << v[i][j];
     }
     return o;
@@ -85,6 +85,10 @@ mat<T> get_diagonal_matrix(const int& n, const T& v = 0) {
     for (int i = 0; i < n; ++i) ret[i][i] = v;
     return ret;
 }
+
+template <typename T>
+concept Can_bit = requires(T a) { a >>= 1; };
+
 template <not_mat T>
 struct phalanx : public mat<T> {
     phalanx(const int& n = 1, const T& v = 0) : mat<T>(n, n, v) {}
