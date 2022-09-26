@@ -20,6 +20,7 @@ void print(const double &s) { printf("%lf", s); }
 void print(const char &c) { putchar(c); }
 void print(const char *s) { printf("%s", s); }
 void print(const std::string &s) { for (const char &c : s) putchar(c); }
+void print(const bool &x) { printf("%s", x ? "true" : "false"); }
 template <typename T, is_int> void print(const std::vector<T> &s) { print(s.front()); for (size_t i = 1, n = s.size(); i < n; ++i) putchar(' '), print(s[i]); }
 void print_() { return; }
 template <typename T, typename... Args> void print_(const T &a, const Args &...args) { print(a), putchar(' '), print_(args...); }
